@@ -1,0 +1,83 @@
+$xmobile: "(max-width: 500px)"; 
+$smobile: "(max-width: 576px)"; 
+$mobile: "(max-width: 767px)"; 
+
+$xtablet: "(max-width: 992px)";
+$tablet: "(max-width: 1200px)";
+
+$iphone4: "(max-height: 530px)"; 
+$iphone5: "(max-width: 350px)";
+$iphoneX: "(min-height: 800px)";
+
+.showmobile {
+    display: none !important;
+    @media #{$mobile}{
+        display: block !important;
+    }
+  }
+  .hidemobile {
+    @media #{#{$mobile}}{
+        display: none !important;
+    }
+  }
+
+$lines-1: 1; 
+$line-height-1: 30px;
+
+.max-lines-1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines-1;
+    line-height: 24px;
+    height: $line-height-1 * $lines-1;
+    align-self: center;
+  }
+
+  @mixin maxLine1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines-1;
+    line-height: 24px;
+    height: $line-height-1 * $lines-1;
+    align-self: center;
+  }
+
+$lines-2: 2; 
+$line-height-2: 30px;
+
+.max-lines-2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines-2;
+    line-height: 24px;
+    height: $line-height-2 * $lines-2;
+    align-self: center;
+  }
+
+
+  @mixin flexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin marginAuto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@keyframes opacityStart{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+// h1, h2, h3, h4{
+//     color: var(--preto);
+// }
+
