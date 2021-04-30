@@ -1,4 +1,6 @@
-#container {
+@import "../../global.scss";
+
+.container {
   text-align: center;
 
   position: absolute;
@@ -6,22 +8,18 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-}
+  height: 100%;
+  .conteudo{
+    margin-top: 72px;
+    width: 100%;
+    &-quadrado{
+      
+      &-title{
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
+      }
+      &-numero{
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+      }
+    }
+  }
 }
