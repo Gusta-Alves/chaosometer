@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { HeaderComponent } from 'src/app/shared/header/header.component';
+import { MaterialModule } from '../material.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { HeaderComponent } from 'src/app/shared/header/header.component';
   imports: [
     CommonModule,
     IonicModule,
-    RouterModule
+    RouterModule,
+    MaterialModule
   ],
   exports: [
     HeaderComponent,

@@ -12,14 +12,32 @@
   .conteudo{
     margin-top: 72px;
     width: 100%;
-    &-quadrado{
-      
-      &-title{
-
+    padding: 20px 0;
+    &-box{
+      @include flexCenter();
+      &-quadrado{
+        width: 100%;
+        padding: 10px 0;
+        &-numero{
+          font-weight: bold;
+          color: var(--ion-color-success-contrast);
+          font-size: 24px;
+        }
+        &-title{
+          color: var(--ion-color-success-contrast);
+          font-size: 18px;
+        }
       }
-      &-numero{
-
+      &-quadrado.verde{
+        background-color: mat-color($accentPalette);
+      }
+      &-quadrado.vermelho{
+        background-color: mat-color($warnPalette);
       }
     }
+  }
+  table {
+    margin: 20px 0;
+    width: 100%;
   }
 }
