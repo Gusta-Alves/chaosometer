@@ -13,6 +13,9 @@
     margin-top: 72px;
     width: 100%;
     padding: 20px 0;
+    &-titulo{
+      color: mat-color($primaryPalette);
+    }
     &-box{
       @include flexCenter();
       &-quadrado{
@@ -37,7 +40,7 @@
     }
   }
   table {
-    margin: 20px 0;
+    margin: 20px 0 50px;
     width: 100%;
   }
 }
