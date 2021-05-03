@@ -14,6 +14,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 const materiais = [
   MatExpansionModule,
@@ -27,7 +29,9 @@ const materiais = [
   MatRadioModule,
   MatButtonModule,
   MatInputModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatDividerModule,
+  MatListModule,
 ]
 
 @NgModule({

@@ -1,10 +1,15 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar color="primary">
     <ion-title>
-      CHAOS O´METER - Gerenciamento de Informações Ambientais Urbanas
+      CHAOS O´METER
     </ion-title>
+    <!-- <ion-buttons slot="primary">
+      <div class="perfilPic" slot="start">
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt="">
+      </div>
+    </ion-buttons> -->
   </ion-toolbar>
-</ion-header> -->
+</ion-header>
 
 <ion-content>
   <div class="container">
@@ -33,8 +38,8 @@
         <!-- Data Column -->
         <ng-container matColumnDef="info">
           <th mat-header-cell *matHeaderCellDef> Info </th>
-          <td mat-cell *matCellDef="let element"> 
-            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary" aria-label="Info icon" (click)="modalInfo(element)">
               <mat-icon>info</mat-icon>
             </button>
           </td>
@@ -43,7 +48,7 @@
         <!-- Tipo Column -->
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef> Data </th>
-          <td mat-cell *matCellDef="let element"> 
+          <td mat-cell *matCellDef="let element">
             {{element.date}}
           </td>
         </ng-container>
@@ -83,7 +88,7 @@
   </div>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="primary">
-    <ion-fab-button routerLink="/forms">
+    <ion-fab-button (click)="criar_incidente()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

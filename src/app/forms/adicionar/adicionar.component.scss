@@ -1,18 +1,9 @@
 @import '../../../global.scss';
 
-// .contentImg{
-//     @include flexCenter();
-//     flex-direction: column;
-//     color: mat-color($primaryPalette);
-//     padding: 10px;
-//     border: 2px solid #e0e0e0;
-//     border-radius: 10px;
-//     border-style: dotted;
-//     cursor: pointer;
-//     button{
-//         margin-bottom: 10px;
-//     }
-// }
+.container{
+    margin-top: 20px;
+}
+
 .danger{
     color: mat-color($warnPalette);
     border: 2px solid mat-color($warnPalette);
@@ -22,7 +13,7 @@
     padding-top: 20px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     button{
         margin-left: 8px;
@@ -34,3 +25,7 @@
     font-size: 18px;
     font-weight: 500;
 }
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }

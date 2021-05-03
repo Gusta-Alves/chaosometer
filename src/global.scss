@@ -38,3 +38,7 @@ $warnPalette: mat-palette($mat-red);
 h1, h2, h3, h4{
     color: mat-color($primaryPalette);
 }
+
+button{
+    line-height: 36px;
+}

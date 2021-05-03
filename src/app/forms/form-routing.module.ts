@@ -5,7 +5,9 @@ import { AdicionarComponent } from './adicionar/adicionar.component';
 const routes: Routes = [
   {
     path: '',
-    component: AdicionarComponent,
+    children: [
+      { path: 'adicionar', component: AdicionarComponent }
+    ]
   }
 ];
 

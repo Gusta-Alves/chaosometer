@@ -1,59 +1,61 @@
+<ion-header>
+	<ion-toolbar color="primary">
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<ion-title>Adicionar Incidente</ion-title>
+	</ion-toolbar>
+</ion-header>
+
 <ion-content>
   <div class="container">
-    <div class="conteudo">
 
-      <h1>Adicionar incidente</h1>
+    <!-- <h1>Adicionar incidente</h1> -->
 
-      <form [formGroup]="cadastro" (ngSubmit)="onSubmit()">
-        <div class="row">
-
-
-          <mat-form-field appearance="outline" class="col-12">
-            <mat-label>Tipo de incidente</mat-label>
-            <mat-select formControlName="tipo">
-              <mat-option [value]="null">Selecione um incidente</mat-option>
-              <mat-option *ngFor="let incidente of incidentes" [value]="incidente.id">{{ incidente.nome }}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="cadastro.get('tipo').hasError('required')">Escolha um tipo</mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="outline" class="col-12">
-            <mat-label>Local</mat-label>
-            <input matInput placeholder="Digite o endereço" formControlName="local">
-            <mat-error *ngIf="cadastro.get('local').hasError('required')">Insira o local do incidente</mat-error>
-          </mat-form-field>
-          
-          <mat-form-field appearance="fill" class="example-form-field" class="col-12">
-            <mat-label>Escolha uma data</mat-label>
-            <input matInput [matDatepicker]="datepicker" formControlName="date">
-            <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-            <mat-datepicker #datepicker>
-              <mat-datepicker-actions>
-                <button mat-button matDatepickerCancel>Cancelar</button>
-                <button mat-raised-button color="primary" matDatepickerApply>Escolher</button>
-              </mat-datepicker-actions>
-            </mat-datepicker>
-            <mat-error *ngIf="cadastro.get('date').hasError('required')">Insira a data do incidente</mat-error>
-          </mat-form-field>
-          
-          <div class="radio" class="col-12">
-            <mat-radio-group aria-label="Selecione o status" formControlName="status">
-              <mat-label class="status">Selecione um status</mat-label>
-              <br><br>
-              <mat-radio-button [value]="1">Em Andamento</mat-radio-button>
-              <br>
-              <mat-radio-button [value]="2">Encerrado</mat-radio-button>
-            </mat-radio-group>
-          </div>
+    <form [formGroup]="cadastro" (ngSubmit)="onSubmit()">
+      <div class="row">
 
 
-          <div class="buttonSubmit">
-            <button mat-raised-button type="button" (click)="cancel()" color="warn">Voltar</button>
-            <button mat-raised-button [disabled]="!cadastro.dirty" color="primary">Cadastrar</button>
-          </div>
+        <mat-form-field appearance="outline" class="col-12">
+          <mat-label>Tipo de incidente</mat-label>
+          <mat-select formControlName="tipo">
+            <mat-option [value]="null">Selecione um incidente</mat-option>
+            <mat-option *ngFor="let incidente of incidentes" [value]="incidente.id">{{ incidente.nome }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="cadastro.get('tipo').hasError('required')">Escolha um tipo</mat-error>
+        </mat-form-field>
 
+        <mat-form-field appearance="outline" class="col-12">
+          <mat-label>Local</mat-label>
+          <input matInput placeholder="Digite o endereço" formControlName="local">
+          <mat-error *ngIf="cadastro.get('local').hasError('required')">Insira o local do incidente</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="example-form-field" class="col-12">
+          <mat-label>Escolha uma data</mat-label>
+          <input matInput [matDatepicker]="datepicker" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+          <mat-datepicker #datepicker>
+            <mat-datepicker-actions>
+              <button mat-button matDatepickerCancel>Cancelar</button>
+              <button mat-raised-button color="primary" matDatepickerApply>Escolher</button>
+            </mat-datepicker-actions>
+          </mat-datepicker>
+          <mat-error *ngIf="cadastro.get('date').hasError('required')">Insira a data do incidente</mat-error>
+        </mat-form-field>
+
+        <mat-radio-group aria-label="Selecione o status" formControlName="status" class="col-12">
+          <mat-radio-button [value]="1">Em Andamento</mat-radio-button>
+          <mat-radio-button [value]="2">Encerrado</mat-radio-button>
+        </mat-radio-group>
+
+
+        <div class="buttonSubmit">
+          <button mat-raised-button type="button" (click)="cancel()" color="warn">Cancelar</button>
+          <button mat-raised-button [disabled]="!cadastro.valid" color="primary">Cadastrar</button>
         </div>
-      </form>
-    </div>
+
+      </div>
+    </form>
   </div>
 </ion-content>
