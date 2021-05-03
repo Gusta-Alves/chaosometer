@@ -16,6 +16,7 @@ import {MatInputModule} from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
 
 const materiais = [
   MatExpansionModule,
@@ -32,6 +33,7 @@ const materiais = [
   MatNativeDateModule,
   MatDividerModule,
   MatListModule,
+  MatDialogModule
 ]
 
 @NgModule({

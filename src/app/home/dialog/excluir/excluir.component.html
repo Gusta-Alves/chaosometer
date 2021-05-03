@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Remoção de item</h1>
+<div mat-dialog-content>
+  <p>Deseja realmente remover o incidente "{{data.incidente}}"?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="warn" (click)="onNoClick()">Cancelar</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Sim</button>
+</div>

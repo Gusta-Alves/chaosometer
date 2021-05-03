@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { MaterialModule } from '../material.module';
 import { ModalComponent } from './modal/modal.component';
+import { ExcluirComponent } from './dialog/excluir/excluir.component';
 
 
 @NgModule({
@@ -14,8 +15,7 @@ import { ModalComponent } from './modal/modal.component';
     IonicModule,
     HomePageRoutingModule,
     MaterialModule,
-    
   ],
-  declarations: [HomePage, ModalComponent]
+  declarations: [HomePage, ModalComponent, ExcluirComponent]
 })
 export class HomePageModule {}

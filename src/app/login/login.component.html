@@ -1,0 +1,19 @@
+<ion-content>
+  <div class="container">
+    <!-- <h1>CHAOS O´METER</h1> -->
+    <h1>App do bigode</h1>
+    <form [formGroup]="form_login" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="col-12">
+        <mat-label>usuário</mat-label>
+        <input matInput placeholder="Digite o endereço" formControlName="usuario">
+        <mat-error *ngIf="form_login.get('usuario').hasError('required')">Insira um usuário válido.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="col-12">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" placeholder="******" formControlName="senha">
+        <mat-error *ngIf="form_login.get('senha').hasError('required')">Insira uma senha válida.</mat-error>
+      </mat-form-field>
+      <button mat-raised-button [disabled]="!form_login.valid" color="primary">Entrar</button>
+    </form>
+  </div>
+</ion-content>

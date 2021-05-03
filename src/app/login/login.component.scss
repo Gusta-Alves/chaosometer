@@ -1,0 +1,6 @@
+@import '../../global.scss';
+
+.container{
+    @include flexCenter();
+    flex-direction: column;
+}
