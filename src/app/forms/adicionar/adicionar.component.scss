@@ -1,0 +1,36 @@
+@import '../../../global.scss';
+
+// .contentImg{
+//     @include flexCenter();
+//     flex-direction: column;
+//     color: mat-color($primaryPalette);
+//     padding: 10px;
+//     border: 2px solid #e0e0e0;
+//     border-radius: 10px;
+//     border-style: dotted;
+//     cursor: pointer;
+//     button{
+//         margin-bottom: 10px;
+//     }
+// }
+.danger{
+    color: mat-color($warnPalette);
+    border: 2px solid mat-color($warnPalette);
+}
+
+.buttonSubmit{
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button{
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+}
+.status{
+    color: mat-color($primaryPalette);
+    font-size: 18px;
+    font-weight: 500;
+}

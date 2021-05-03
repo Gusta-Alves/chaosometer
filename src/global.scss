@@ -34,3 +34,7 @@ $accentPalette: mat-palette($mat-pink, A200, A100, A400);
 
 // the default warn palette is red, so use that if the theme doesn't define one
 $warnPalette: mat-palette($mat-red);
+
+h1, h2, h3, h4{
+    color: mat-color($primaryPalette);
+}

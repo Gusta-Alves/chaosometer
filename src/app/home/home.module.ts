@@ -11,7 +11,6 @@ import { MaterialModule } from '../material.module';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     IonicModule,
     HomePageRoutingModule,
     MaterialModule

@@ -31,43 +31,48 @@
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!-- Data Column -->
-        <ng-container matColumnDef="position">
+        <ng-container matColumnDef="info">
           <th mat-header-cell *matHeaderCellDef> Info </th>
-          <td mat-cell *matCellDef="let element">
-            <mat-icon color="primary" aria-hidden="false">info</mat-icon>  
-            
+          <td mat-cell *matCellDef="let element"> 
+            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+              <mat-icon>info</mat-icon>
+            </button>
           </td>
         </ng-container>
 
         <!-- Tipo Column -->
-        <ng-container matColumnDef="name">
+        <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef> Data </th>
           <td mat-cell *matCellDef="let element"> 
-            12/04/21
+            {{element.date}}
           </td>
         </ng-container>
 
         <!-- Info Column -->
-        <ng-container matColumnDef="weight">
+        <ng-container matColumnDef="incidente">
           <th mat-header-cell *matHeaderCellDef> Tipo </th>
           <td mat-cell *matCellDef="let element">
-            Acidente
+            {{element.incidente}}
           </td>
         </ng-container>
 
         <!-- Editar Column -->
-        <ng-container matColumnDef="symbol">
+        <ng-container matColumnDef="edit">
           <th mat-header-cell *matHeaderCellDef> Editar </th>
           <td mat-cell *matCellDef="let element">
-            <mat-icon color="primary" aria-hidden="false">edit</mat-icon>
+            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+              <mat-icon>edit</mat-icon>
+            </button>
           </td>
         </ng-container>
 
         <!-- Excluir Column -->
-        <ng-container matColumnDef="teste">
+        <ng-container matColumnDef="excluir">
           <th mat-header-cell *matHeaderCellDef> Excluir </th>
           <td mat-cell *matCellDef="let element">
-            <mat-icon color="warn" aria-hidden="false">delete_forever</mat-icon>
+            <button mat-icon-button color="warn" aria-label="Example icon button with a home icon">
+              <mat-icon>delete_forever</mat-icon>
+            </button>
           </td>
         </ng-container>
 
@@ -78,7 +83,7 @@
   </div>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="primary">
-    <ion-fab-button>
+    <ion-fab-button routerLink="/forms">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

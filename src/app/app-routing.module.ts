@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
+    path: 'forms',
+    loadChildren: () => import('./forms/form.module').then( m => m.FormsPageModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
