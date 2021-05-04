@@ -36,6 +36,7 @@ export class HomePage implements OnInit, ViewWillEnter{
 
   ionViewWillEnter() {
     this.popular_tabela();
+    this.localStorageUtils.limparEditavel();
   }
 
   async popular_tabela(){
