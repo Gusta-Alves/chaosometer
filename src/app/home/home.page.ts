@@ -41,7 +41,10 @@ export class HomePage implements OnInit, ViewWillEnter{
 
   async popular_tabela(){
     this.dataSource = await this.localStorageUtils.obterIncidentes();   
-    if(!this.dataSource) this.dataSource = []; 
+    if(!this.dataSource) {
+      this.localStorageUtils.salvarIncidentes([]);
+      this.dataSource = []
+    }; 
     this.table.renderRows();
     if(this.dataSource.length){ 
       this.verificar_ativos();

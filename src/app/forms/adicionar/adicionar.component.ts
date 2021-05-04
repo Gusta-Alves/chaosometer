@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, ViewWillLeave } from '@ionic/angular';
+import { NavController, ViewWillEnter, ViewWillLeave } from '@ionic/angular';
 import { ITabela } from 'src/app/home/interfaces/ITabela';
 import { LocalStorageUtils } from 'src/app/utils/localStorage';
 import { IIncidentes } from '../interfaces/IIncidentes';
@@ -10,19 +10,21 @@ import { IIncidentes } from '../interfaces/IIncidentes';
   templateUrl: './adicionar.component.html',
   styleUrls: ['./adicionar.component.scss'],
 })
-export class AdicionarComponent implements OnInit, ViewWillLeave {
+export class AdicionarComponent implements OnInit, ViewWillEnter {
 
   public cadastro: FormGroup;
   public incidentes: IIncidentes[] = [{id: 0, incidente: 'Poluição do ar'}, {id: 1, incidente: 'Transito'}, {id: 2, incidente: 'Acidente'}, {id: 3, incidente: 'Transporte Público'}, {id: 4, incidente: 'Alagamento'}, {id: 5, incidente: 'Vazamento'}, {id: 6, incidente: 'Invasão'}, {id: 7, incidente: 'Desmatamento'}, {id: 8, incidente: 'Despejo de lixo'}, {id: 9, incidente: 'Queimada'}];
   public localStorageUtils = new LocalStorageUtils();
   public editavel: boolean = false;
-  public id: number;
+  public id: number = 0;
 
   constructor(private _form_builder: FormBuilder,
               private _nav_controller: NavController) { }
 
-  ionViewWillLeave(): void {
-    this.localStorageUtils.limparEditavel();
+  ionViewWillEnter(): void {
+    this.editavel = false;
+    this.id = 0;
+    this.checar_editavel();
   }
 
   ngOnInit() {
@@ -31,8 +33,7 @@ export class AdicionarComponent implements OnInit, ViewWillLeave {
       status: [1, Validators.required],
       date: [null, Validators.required],
       local: [null, Validators.required]
-    });
-    this.checar_editavel();
+    })
   }
 
   async checar_editavel(){

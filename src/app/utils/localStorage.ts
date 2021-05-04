@@ -30,8 +30,9 @@ export class LocalStorageUtils {
     }
 
     public async criarIncidente(incidente: ITabela) {
-        const objeto = await Storage.get({ key: '@incidentes/tabela' });        
-        if(!objeto.value || objeto.value.length == 0){
+        const objeto = await Storage.get({ key: '@incidentes/tabela' });   
+        const incidentes: ITabela[] = JSON.parse(objeto.value);     
+        if(incidentes.length === 0){
             incidente.id = 1;
             const incidentes: ITabela[] = [incidente];
             await Storage.set({
@@ -40,7 +41,7 @@ export class LocalStorageUtils {
               });
               return;
         }        
-        const incidentes: ITabela[] = JSON.parse(objeto.value);
+       
             const novo_id: number = incidentes[incidentes.length - 1].id + 1;
             incidente.id = novo_id;
             incidentes.push(incidente);
