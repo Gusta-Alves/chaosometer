@@ -1,20 +1,14 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController, NavController, ViewWillEnter } from '@ionic/angular';
+import { LocalStorageUtils } from '../utils/localStorage';
 import { ExcluirComponent } from './dialog/excluir/excluir.component';
 import { ITabela } from './interfaces/ITabela';
 import { ModalComponent } from './modal/modal.component';
 
 const ELEMENT_DATA: ITabela[] = [
-  {date: '10/12/21', incidente: 'Poluição do ar', local: 'rua teste', status: 1, id: 0},
-  {date: '10/12/21', incidente: 'Enchente no rio' , local: 'rua teste', status: 1, id: 1},
-  {date: '10/12/21', incidente: 'acidente', local: 'rua teste', status: 1, id: 2},
-  {date: '10/12/21', incidente: 'acidente', local: 'rua teste', status: 1, id: 3},
-  {date: '10/12/21', incidente: 'acidente', local: 'rua teste', status: 1, id: 4},
-  {date: '10/12/21', incidente: 'acidente', local: 'rua teste', status: 1, id: 5},
-  {date: '10/12/21', incidente: 'acidente', local: 'rua teste', status: 1, id: 6},
-  {date: '10/12/21', incidente: 'acidente', local: 'rua teste', status: 1, id: 7},
+  {date: '', incidente: '', local: '', status: 0, id: 0},
 ];
 
 @Component({
@@ -23,18 +17,48 @@ const ELEMENT_DATA: ITabela[] = [
   styleUrls: ['home.page.scss'],
 })
 
-export class HomePage {
+export class HomePage implements OnInit, ViewWillEnter{
 
   @ViewChild(MatTable) table: MatTable<any>;
   displayedColumns: string[] = ['info', 'date', 'incidente', 'edit', 'excluir'];
-  dataSource = ELEMENT_DATA;
+  dataSource: ITabela[] = ELEMENT_DATA;
+  localStorageUtils = new LocalStorageUtils();
+  ativos: number = 0;
+  inativos: number = 0;
 
   constructor(private _nav_controller: NavController,
               public modalController: ModalController,
-              private dialog: MatDialog) {}
+              private dialog: MatDialog) { }
+
+  ngOnInit(): void {
+
+  }
+
+  ionViewWillEnter() {
+    this.popular_tabela();
+  }
+
+  async popular_tabela(){
+    this.dataSource = await this.localStorageUtils.obterIncidentes();   
+    if(!this.dataSource) this.dataSource = []; 
+    this.table.renderRows();
+    if(this.dataSource.length){ 
+      this.verificar_ativos();
+    }
+  }
+
+  verificar_ativos(){
+    this.ativos = this.dataSource.filter(inci => inci.status === 1).length;
+    this.inativos = this.dataSource.filter(inci => inci.status === 2).length;
+  }
 
   criar_incidente(){
-    this._nav_controller.navigateForward(['/forms/adicionar'])
+    this._nav_controller.navigateForward(['/forms/adicionar']);
+  }
+
+  async editar_incidente(item: ITabela){
+    await this.localStorageUtils.salvarIncidenteEditavel(item);
+    this._nav_controller.navigateForward(['/forms/adicionar']);
   }
 
   async modalInfo(item: ITabela) {
@@ -50,10 +74,11 @@ export class HomePage {
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         const index = this.dataSource.findIndex(tab => tab.id === item.id);        
-        this.dataSource.splice(index, 1);  
+        this.dataSource.splice(index, 1); 
+        this.localStorageUtils.removerIncidente(item, index); 
+        this.verificar_ativos();
         this.table.renderRows();
       }
-      // if(result) this.deleteByID(id);
     });    
   }
 

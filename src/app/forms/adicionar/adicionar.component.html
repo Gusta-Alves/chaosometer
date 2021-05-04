@@ -18,11 +18,11 @@
 
         <mat-form-field appearance="outline" class="col-12">
           <mat-label>Tipo de incidente</mat-label>
-          <mat-select formControlName="tipo">
+          <mat-select formControlName="incidente">
             <mat-option [value]="null">Selecione um incidente</mat-option>
-            <mat-option *ngFor="let incidente of incidentes" [value]="incidente.id">{{ incidente.nome }}</mat-option>
+            <mat-option *ngFor="let incidente of incidentes" [value]="incidente.incidente">{{ incidente.incidente }}</mat-option>
           </mat-select>
-          <mat-error *ngIf="cadastro.get('tipo').hasError('required')">Escolha um tipo</mat-error>
+          <mat-error *ngIf="cadastro.get('incidente').hasError('required')">Escolha um tipo</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="col-12">

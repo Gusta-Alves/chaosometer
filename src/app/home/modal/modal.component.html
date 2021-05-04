@@ -15,7 +15,7 @@
     <mat-card class="card">
       <h1>{{ item.incidente }}</h1>
       <mat-list>
-        <mat-list-item>Data: {{ item.date }}</mat-list-item>
+        <mat-list-item>Data: {{ item.date | date }}</mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item>Status: {{ item.status === 1 ? 'Em andamento' : 'Encerrado' }}</mat-list-item>
         <mat-divider></mat-divider>

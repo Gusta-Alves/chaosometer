@@ -1,4 +1,4 @@
 export interface IIncidentes{
     id: number,
-    nome: string
+    incidente: string
 }
