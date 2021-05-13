@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package io.caos.meters;
 
 import android.os.Bundle;
 

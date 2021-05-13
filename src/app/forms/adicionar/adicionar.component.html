@@ -1,10 +1,10 @@
 <ion-header>
-	<ion-toolbar color="primary">
-		<ion-buttons slot="start">
-			<ion-back-button></ion-back-button>
-		</ion-buttons>
-		<ion-title>Adicionar Incidente</ion-title>
-	</ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Adicionar Incidente</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -20,7 +20,8 @@
           <mat-label>Tipo de incidente</mat-label>
           <mat-select formControlName="incidente">
             <mat-option [value]="null">Selecione um incidente</mat-option>
-            <mat-option *ngFor="let incidente of incidentes" [value]="incidente.incidente">{{ incidente.incidente }}</mat-option>
+            <mat-option *ngFor="let incidente of incidentes" [value]="incidente.incidente">{{ incidente.incidente }}
+            </mat-option>
           </mat-select>
           <mat-error *ngIf="cadastro.get('incidente').hasError('required')">Escolha um tipo</mat-error>
         </mat-form-field>
@@ -49,6 +50,12 @@
           <mat-radio-button [value]="2">Encerrado</mat-radio-button>
         </mat-radio-group>
 
+        <ion-img *ngIf="photo" [src]="photo.webviewPath"></ion-img>
+        <ion-fab >
+          <ion-fab-button (click)="addPhotoToGallery()">
+            <ion-icon name="camera"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
 
         <div class="buttonSubmit">
           <button mat-raised-button type="button" (click)="cancel()" color="warn">Cancelar</button>

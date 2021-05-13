@@ -4,6 +4,8 @@ import { NavController, ViewWillEnter, ViewWillLeave } from '@ionic/angular';
 import { ITabela } from 'src/app/home/interfaces/ITabela';
 import { LocalStorageUtils } from 'src/app/utils/localStorage';
 import { IIncidentes } from '../interfaces/IIncidentes';
+import { PhotoService } from '../../services/photo.service';
+import { IPhoto } from '../interfaces/IPhoto';
 
 @Component({
   selector: 'app-adicionar',
@@ -17,9 +19,11 @@ export class AdicionarComponent implements OnInit, ViewWillEnter {
   public localStorageUtils = new LocalStorageUtils();
   public editavel: boolean = false;
   public id: number = 0;
+  public photo: IPhoto;
 
   constructor(private _form_builder: FormBuilder,
-              private _nav_controller: NavController) { }
+              private _nav_controller: NavController,
+              public photoService: PhotoService) { }
 
   ionViewWillEnter(): void {
     this.editavel = false;
@@ -66,6 +70,10 @@ export class AdicionarComponent implements OnInit, ViewWillEnter {
 
   cancel(){
     this._nav_controller.back();
+  }
+
+  async addPhotoToGallery() {
+    this.photo = await this.photoService.addNewToGallery();
   }
 
 }
