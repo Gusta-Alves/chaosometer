@@ -20,6 +20,11 @@
         <mat-list-item>Status: {{ item.status === 1 ? 'Em andamento' : 'Encerrado' }}</mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item>Local: {{ item.local }}</mat-list-item>
+        <mat-divider *ngIf="item.imagem"></mat-divider>
+        <br>
+        <div class="imagem-box" *ngIf="item.imagem">
+          <ion-img class="imagem" [src]="item.imagem"></ion-img>
+        </div>
       </mat-list>
     </mat-card>
 </ion-content>

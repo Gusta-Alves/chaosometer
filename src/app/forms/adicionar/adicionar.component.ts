@@ -36,7 +36,8 @@ export class AdicionarComponent implements OnInit, ViewWillEnter {
       incidente: [null, Validators.required],
       status: [1, Validators.required],
       date: [null, Validators.required],
-      local: [null, Validators.required]
+      local: [null, Validators.required],
+      imagem: [null]
     })
   }
 
@@ -47,8 +48,10 @@ export class AdicionarComponent implements OnInit, ViewWillEnter {
         incidente: valor.incidente,
         status: valor.status,
         date: valor.date,
-        local: valor.local
+        local: valor.local,
+        imagem: valor.imagem
       });
+      this.photo = {filepath: '', webviewPath: valor.imagem}
       this.editavel = true;
       this.id = valor.id;
     }
@@ -74,6 +77,9 @@ export class AdicionarComponent implements OnInit, ViewWillEnter {
 
   async addPhotoToGallery() {
     this.photo = await this.photoService.addNewToGallery();
+    this.cadastro.patchValue({
+      imagem: this.photo.webviewPath
+    })
   }
 
 }

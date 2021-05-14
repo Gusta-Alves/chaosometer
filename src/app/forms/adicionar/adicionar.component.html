@@ -49,17 +49,17 @@
           <mat-radio-button [value]="1">Em Andamento</mat-radio-button>
           <mat-radio-button [value]="2">Encerrado</mat-radio-button>
         </mat-radio-group>
-
-        <ion-img *ngIf="photo" [src]="photo.webviewPath"></ion-img>
-        <ion-fab >
-          <ion-fab-button (click)="addPhotoToGallery()">
-            <ion-icon name="camera"></ion-icon>
-          </ion-fab-button>
-        </ion-fab>
+        <input type="text" class="col-12" formControlName="imagem" style="display: none;" />
+        <div class="imagem-container">
+          <br>
+          <button mat-raised-button color="primary" type="button" (click)="addPhotoToGallery()">{{ photo ? 'Trocar imagem' : 'Adicionar imagem' }}</button>
+          <br>
+          <ion-img class="imagem" *ngIf="photo" [src]="photo.webviewPath" (click)="addPhotoToGallery()"></ion-img>
+        </div>
 
         <div class="buttonSubmit">
           <button mat-raised-button type="button" (click)="cancel()" color="warn">Cancelar</button>
-          <button mat-raised-button [disabled]="!cadastro.valid" color="primary">Cadastrar</button>
+          <button mat-raised-button type="submit" color="primary" [disabled]="!cadastro.valid">Cadastrar</button>
         </div>
 
       </div>

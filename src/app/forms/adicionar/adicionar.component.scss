@@ -15,6 +15,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 20px;
     button{
         margin-left: 8px;
         margin-right: 8px;
@@ -28,4 +29,15 @@
 
 .mat-radio-button ~ .mat-radio-button {
     margin-left: 16px;
-  }
+}
+
+
+.imagem-container{
+    width: 100%;
+    @include flexCenter();
+    flex-direction: column;
+    .imagem{
+        width: 200px;
+        height: auto;
+    }    
+}

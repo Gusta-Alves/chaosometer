@@ -8,7 +8,7 @@ import { ITabela } from './interfaces/ITabela';
 import { ModalComponent } from './modal/modal.component';
 
 const ELEMENT_DATA: ITabela[] = [
-  {date: '', incidente: '', local: '', status: 0, id: 0},
+  {date: '', incidente: '', local: '', status: 0, id: 0, imagem: null},
 ];
 
 @Component({

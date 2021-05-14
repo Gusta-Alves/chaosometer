@@ -1,3 +1,14 @@
+@import '../../../global.scss';
+
 .card{
     height: 100%;
+}
+
+.imagem-box{
+    width: 100%;
+    @include flexCenter();
+}
+
+.imagem{
+    width: 50%;
 }
