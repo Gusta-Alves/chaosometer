@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">desastres</string>
-    <string name="title_activity_main">desastres</string>
+    <string name="app_name">Chaos O´Meter</string>
+    <string name="title_activity_main">Chaos O´Meter</string>
     <string name="package_name">io.caos.meters</string>
     <string name="custom_url_scheme">io.caos.meters</string>
 </resources>

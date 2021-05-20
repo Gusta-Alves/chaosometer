@@ -19,7 +19,7 @@ export class AdicionarComponent implements OnInit, ViewWillEnter {
   public localStorageUtils = new LocalStorageUtils();
   public editavel: boolean = false;
   public id: number = 0;
-  public photo: IPhoto;
+  public photo: IPhoto = { filepath: '', webviewPath: '' };
 
   constructor(private _form_builder: FormBuilder,
               private _nav_controller: NavController,
@@ -51,7 +51,8 @@ export class AdicionarComponent implements OnInit, ViewWillEnter {
         local: valor.local,
         imagem: valor.imagem
       });
-      this.photo = {filepath: '', webviewPath: valor.imagem}
+      if (valor.imagem) this.photo = {filepath: '', webviewPath: valor.imagem}
+      else this.photo = null;
       this.editavel = true;
       this.id = valor.id;
     }

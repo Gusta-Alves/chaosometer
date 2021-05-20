@@ -1,6 +1,6 @@
 {
   "appId": "io.caos.meters",
-  "appName": "desastres",
+  "appName": "Chaos O´Meter",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
@@ -9,9 +9,5 @@
       "launchShowDuration": 0
     }
   },
-  "cordova": {},
-  "server": {
-    "url": "http://192.168.0.28:8100",
-    "cleartext": true
-  }
+  "cordova": {}
 }
