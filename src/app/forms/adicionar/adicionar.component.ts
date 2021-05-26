@@ -15,17 +15,31 @@ import { IPhoto } from '../interfaces/IPhoto';
 export class AdicionarComponent implements OnInit, ViewWillEnter {
 
   public cadastro: FormGroup;
-  public incidentes: IIncidentes[] = [{id: 0, incidente: 'Poluição do ar'}, {id: 1, incidente: 'Transito'}, {id: 2, incidente: 'Acidente'}, {id: 3, incidente: 'Transporte Público'}, {id: 4, incidente: 'Alagamento'}, {id: 5, incidente: 'Vazamento'}, {id: 6, incidente: 'Invasão'}, {id: 7, incidente: 'Desmatamento'}, {id: 8, incidente: 'Despejo de lixo'}, {id: 9, incidente: 'Queimada'}];
+  public incidentes: IIncidentes[] = [
+    { id: 0, incidente: 'Poluição do ar' },
+    { id: 1, incidente: 'Transito' },
+    { id: 2, incidente: 'Acidente' },
+    { id: 3, incidente: 'Transporte Público' },
+    { id: 4, incidente: 'Alagamento' },
+    { id: 5, incidente: 'Vazamento' },
+    { id: 6, incidente: 'Invasão de Moradia' },
+    { id: 7, incidente: 'Invasão de Terreno' },
+    { id: 8, incidente: 'Desmatamento' },
+    { id: 9, incidente: 'Despejo de lixo' },
+    { id: 10, incidente: 'Queimada' },
+    { id: 11, incidente: 'Incendio' }
+  ];
   public localStorageUtils = new LocalStorageUtils();
   public editavel: boolean = false;
   public id: number = 0;
-  public photo: IPhoto = { filepath: '', webviewPath: '' };
+  public photo: IPhoto;
 
   constructor(private _form_builder: FormBuilder,
-              private _nav_controller: NavController,
-              public photoService: PhotoService) { }
+    private _nav_controller: NavController,
+    public photoService: PhotoService) { }
 
   ionViewWillEnter(): void {
+    this.photo = null;
     this.editavel = false;
     this.id = 0;
     this.checar_editavel();
@@ -41,9 +55,9 @@ export class AdicionarComponent implements OnInit, ViewWillEnter {
     })
   }
 
-  async checar_editavel(){
+  async checar_editavel() {
     const valor: ITabela = await this.localStorageUtils.obterIncidenteEditavel();
-    if(valor){
+    if (valor) {
       this.cadastro.patchValue({
         incidente: valor.incidente,
         status: valor.status,
@@ -51,20 +65,20 @@ export class AdicionarComponent implements OnInit, ViewWillEnter {
         local: valor.local,
         imagem: valor.imagem
       });
-      if (valor.imagem) this.photo = {filepath: '', webviewPath: valor.imagem}
+      if (valor.imagem) this.photo = { filepath: '', webviewPath: valor.imagem }
       else this.photo = null;
       this.editavel = true;
       this.id = valor.id;
     }
   }
 
-  async onSubmit(){
-    if(!this.cadastro.valid) return;
+  async onSubmit() {
+    if (!this.cadastro.valid) return;
     const incidente: ITabela = Object.assign({}, this.cadastro.value);
-    if(!this.editavel){
+    if (!this.editavel) {
       await this.localStorageUtils.criarIncidente(incidente)
-    } 
-    else{
+    }
+    else {
       const incidentes = await this.localStorageUtils.obterIncidentes();
       const index = incidentes.findIndex(inc => inc.id === this.id);
       await this.localStorageUtils.atualizarIncidente(incidente, index);
@@ -72,7 +86,7 @@ export class AdicionarComponent implements OnInit, ViewWillEnter {
     this._nav_controller.back();
   }
 
-  cancel(){
+  cancel() {
     this._nav_controller.back();
   }
 
